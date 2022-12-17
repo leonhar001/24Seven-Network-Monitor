@@ -10,7 +10,7 @@ public class ChangeView extends HBox{
 	public ChangeView() {
 		changeView.setStyle(
 				"-fx-background-color: #7289da;"
-				+ "-fx-text-fill: white;"
+				+ "-fx-text-fill: black;"
 				);
 		
 		getChildren().add(changeView);
