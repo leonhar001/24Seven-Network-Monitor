@@ -142,9 +142,9 @@ public class Main extends Application {
 			else
 				primaryStage.setFullScreen(true);
 		});
-		
+		///24Seven-Network-Monitor
 		//AUTOLOAD FILES (JUST FOR TESTING)
-		List<Target> targets = lff.getLinksList(new File("src/linkList.txt"));
+		List<Target> targets = lff.getLinksList(new File("../24Seven-Network-Monitor/24SevenNetworkMonitor/src/linkList.txt"));
 		targets.stream().forEach(target -> targetController.addTargetIntoSolution(target));
 		//AUTOLOAD FILES (JUST FOR TESTING)
 		
