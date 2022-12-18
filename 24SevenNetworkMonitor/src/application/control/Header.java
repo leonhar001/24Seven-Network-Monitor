@@ -41,40 +41,24 @@ public class Header extends VBox{
 		linkEntering.setPromptText("Enter a link");
 		linkEntering.setMinSize(200, 35);
 		linkEntering.setMaxSize(200, 35);
-		linkEntering.setStyle("-fx-background-color: #7289DA;"
-				+ "-fx-font-size: 15;"
-				+ "-fx-prompt-text-fill: #99aab5;"
-				+ "-fx-text-fill: #23272a;");
+		setTextFieldStyle(linkEntering);
 		
 		nameEntering.setPromptText("Enter a name");
 		nameEntering.setMinSize(200, 35);
 		nameEntering.setMaxSize(200, 35);
-		nameEntering.setStyle("-fx-background-color: #7289DA;"
-				+ "-fx-font-size: 15;"
-				+ "-fx-prompt-text-fill: #99aab5;"
-				+ "-fx-text-fill: #23272a;");
-		
 		nameEntering.setAlignment(Pos.CENTER_LEFT);
+		setTextFieldStyle(nameEntering);
 		
 		addTarget.setMinSize(80, 35);
 		addTarget.setMaxSize(80,35);
-		addTarget.setStyle(
-				"-fx-background-color: #6A5ACD;"
-				+"-fx-text-fill: #23272a;"
-				);
+		setHeadButtonsStyle(addTarget);
 
 		ping.setMinSize(80, 20);
-		ping.setStyle(
-				"-fx-background-color: #6A5ACD;"
-				+ "-fx-text-fill: #23272a;"
-				);
+		setHeadButtonsStyle(ping);
 		ping.setTextAlignment(TextAlignment.CENTER);
 		
 		progressBar.setMinSize(centerSize, 20);
-		progressBar.setStyle("-fx-control-inner-background: #6A5ACD;"
-				+"-fx-control-background: transparent;"
-				+ "-fx-accent: #57f287");
-		
+		setProgressBarStyle(progressBar);
 		titleBar.setAlignment(Pos.TOP_RIGHT);
 		
 		HBox titleBarCont = new HBox();
@@ -114,28 +98,11 @@ public class Header extends VBox{
 		return addTarget;
 	}
 
-	public Button getAddFromFileButton() {
-		return functions.getAddFromFileButton();
-	}
-	
-	public Button getSaveLinksButton() {
-		return functions.getSaveLinksButton();
-	}
-	
-	public Button getDeleteButton() {
-		return functions.getDeleteButton();
-	}
-
 	public ProgressBar getBar() {
 		return progressBar;
 	}
-
-	public Button getClearButton() {
-		return functions.getClearButton();
-	}
-	
-	public Button getChangeViewButton() {
-		return functions.getChangeViewButton();
+	public Functions getFunctions() {
+		return functions;
 	}
 
 	public Button getCloseButton() {
@@ -160,5 +127,21 @@ public class Header extends VBox{
 	public Button getPingButton() {
 		return ping;
 	}
+	private void setTextFieldStyle(TextField textField) {
+		textField.setStyle("-fx-background-color: #7289DA;"
+				+ "-fx-font-size: 15;"
+				+ "-fx-prompt-text-fill: #99aab5;"
+				+ "-fx-text-fill: #23272a;");
+	}
 	
+	private void setHeadButtonsStyle(Button button) {
+		button.setStyle("-fx-background-color: #6A5ACD;"
+				+"-fx-text-fill: #23272a;");
+	}
+	
+	private void setProgressBarStyle(ProgressBar progressBar) {
+		progressBar.setStyle("-fx-control-inner-background: #6A5ACD;"
+				+"-fx-control-background: transparent;"
+				+ "-fx-accent: #57f287");
+	}
 }

@@ -17,7 +17,7 @@ public class Functions extends HBox {
 	public Functions() {
 		
 		setMargin(changeToDetailed, new Insets(0,0,0,900));
-		
+		changeToCardView.setDisable(true);
 		setAlignment(Pos.CENTER);
 		setButtonStyle(clear,"#7289da");
 		setButtonStyle(addFromFile,"#7289da");
@@ -45,11 +45,15 @@ public class Functions extends HBox {
 		return delete;
 	}
 	
-	public Button getChangeViewButton() {
+	public Button getChangeToDetailedButton() {
 		return changeToDetailed;
 	}
 	
-	public void setButtonStyle(Button button, String color) {
+	public Button getChangeToCardViewButton() {
+		return changeToCardView;
+	}
+	
+	private void setButtonStyle(Button button, String color) {
 		button.setStyle(
 				"-fx-background-color:"+color+";"
 				+"-fx-text-fill: #23272a;"

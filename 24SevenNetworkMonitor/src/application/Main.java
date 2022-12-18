@@ -22,30 +22,30 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-
+	//TODO watch: https://youtu.be/dw8se4uA1qc
 public class Main extends Application {
 
 	private Double xOffset = 0.0;
 	private Double yOffset = 0.0;
 	
+	BorderPane main = new BorderPane();
+	
+	Cards cards = new Cards();
+	
+	DetailedView detailedView = new DetailedView();
+
+	CardsContainer scrollPane = new CardsContainer(cards);
+	
+	Header header = new Header();
+	
+	FileChooser fileChooser = new FileChooser();
+	
+	LinksFromFile lff = new LinksFromFile();
+	
+	TargetsController targetController = new TargetsController(cards, detailedView);
 	static final int max = 1000000;
 	@Override
 	public void start(Stage primaryStage) {
-		BorderPane main = new BorderPane();
-		
-		Cards cards = new Cards();
-		
-		DetailedView detailedView = new DetailedView();
-
-		CardsContainer scrollPane = new CardsContainer(cards);
-		
-		Header header = new Header();
-		
-		FileChooser fileChooser = new FileChooser();
-		
-		LinksFromFile lff = new LinksFromFile();
-		
-		TargetsController targetController = new TargetsController(cards, detailedView);
 		
 		ObservableList<Screen> screenSizes = Screen.getScreens();
 		Double screenHeight = screenSizes.get(0).getBounds().getHeight();
@@ -61,7 +61,7 @@ public class Main extends Application {
             primaryStage.setY(e.getScreenY() + yOffset);
 		});
 		
-		header.getDeleteButton().setOnAction(e -> {
+		header.getFunctions().getDeleteButton().setOnAction(e -> {
 			targetController.removeSelectedTarget();
 		});
 		
@@ -99,34 +99,35 @@ public class Main extends Application {
 			new Thread(task).start();
 		});
 
-		header.getClearButton().setOnAction(e -> {
+		header.getFunctions().getClearButton().setOnAction(e -> {
 			targetController.removeAllTargets();
 		});
 		
-		header.getAddFromFileButton().setOnAction(e->{
+		header.getFunctions().getAddFromFileButton().setOnAction(e->{
 			fileChooser.setTitle("Load file");
 			File file = fileChooser.showOpenDialog(primaryStage);
 			List<Target> targets = lff.getLinksList(file);
 			targets.stream().forEach(target -> targetController.addTargetIntoSolution(target));
 		});
 		
-		header.getSaveLinksButton().setOnAction(e -> {
+		header.getFunctions().getSaveLinksButton().setOnAction(e -> {
 			fileChooser.setTitle("Save file");
 			File file = fileChooser.showSaveDialog(primaryStage);
 			lff.saveFile(file, targetController.getAllTargetsToSaveFile());
 		});
 		
-		header.getChangeViewButton().setOnAction(e -> {
-			if(cards.isHide()) {
-				cards.showCards();
-				main.setCenter(scrollPane);
-			}
-			else {
-				cards.hideCards();
+		header.getFunctions().getChangeToDetailedButton().setOnAction(e -> {
+				header.getFunctions().getChangeToDetailedButton().setDisable(true);
+				header.getFunctions().getChangeToCardViewButton().setDisable(false);
 				main.setCenter(detailedView);
-			}
-				
 		});
+		
+		header.getFunctions().getChangeToCardViewButton().setOnAction(e -> {
+				header.getFunctions().getChangeToCardViewButton().setDisable(true);
+				header.getFunctions().getChangeToDetailedButton().setDisable(false);
+				main.setCenter(scrollPane);	
+		});
+		
 		
 		header.getCloseButton().setOnAction(e -> {
 			System.exit(0);
@@ -144,8 +145,8 @@ public class Main extends Application {
 		});
 		///24Seven-Network-Monitor
 		//AUTOLOAD FILES (JUST FOR TESTING)
-		List<Target> targets = lff.getLinksList(new File("../24Seven-Network-Monitor/24SevenNetworkMonitor/src/linkList.txt"));
-		targets.stream().forEach(target -> targetController.addTargetIntoSolution(target));
+		//List<Target> targets = lff.getLinksList(new File("../24Seven-Network-Monitor/24SevenNetworkMonitor/src/linkList.txt"));
+		//targets.stream().forEach(target -> targetController.addTargetIntoSolution(target));
 		//AUTOLOAD FILES (JUST FOR TESTING)
 		
 		main.setCenter(scrollPane);

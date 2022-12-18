@@ -36,22 +36,4 @@ public class Cards extends FlowPane {
 		});
 		return returnCard;
 	}
-	
-	public void hideCards() {
-		isHide = true;
-		getChildren().forEach(f -> {
-			f.setVisible(false);
-		});
-	}
-	
-	public void showCards() {
-		isHide = false;
-		getChildren().forEach(f -> {
-			f.setVisible(true);
-		});
-	}
-	
-	public boolean isHide() {
-		return isHide;
-	}
 }	
