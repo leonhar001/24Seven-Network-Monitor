@@ -1,6 +1,7 @@
 package application.mainfunctions;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 
@@ -11,20 +12,21 @@ public class Functions extends HBox {
 	private Button saveLinks = new Button("Save");
 	private Button delete = new Button("Delete");
 	private Button changeToDetailed = new Button("Detailed view");
-
+	private Button changeToCardView = new Button("Card view");
+	
 	public Functions() {
 		
-		setMargin(clear, new Insets(0,0,0,20));
-		setMargin(delete, new Insets(0,1100,0,0));
+		setMargin(changeToDetailed, new Insets(0,0,0,900));
 		
-		setButtonStyle(clear);
-		setButtonStyle(addFromFile);
-		setButtonStyle(saveLinks);
-		setButtonStyle(delete);
-		setButtonStyle(changeToDetailed);
-		
+		setAlignment(Pos.CENTER);
+		setButtonStyle(clear,"#7289da");
+		setButtonStyle(addFromFile,"#7289da");
+		setButtonStyle(saveLinks,"#7289da");
+		setButtonStyle(delete,"#7289da");
+		setButtonStyle(changeToDetailed,"#5464ac" );
+		setButtonStyle(changeToCardView,"#5464ac");
 		setSpacing(20);
-		getChildren().addAll(clear, addFromFile, saveLinks, delete, changeToDetailed);
+		getChildren().addAll(clear, addFromFile, saveLinks, delete, changeToDetailed, changeToCardView);
 	}
 
 	public Button getAddFromFileButton() {
@@ -47,10 +49,10 @@ public class Functions extends HBox {
 		return changeToDetailed;
 	}
 	
-	public void setButtonStyle(Button button) {
+	public void setButtonStyle(Button button, String color) {
 		button.setStyle(
-				"-fx-background-color: #7289da;"
-				+ "-fx-text-fill: #23272a;"
+				"-fx-background-color:"+color+";"
+				+"-fx-text-fill: #23272a;"
 				);
 	}
 }

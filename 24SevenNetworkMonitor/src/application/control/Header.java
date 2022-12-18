@@ -25,13 +25,12 @@ public class Header extends VBox{
 	
 	private Button addTarget = new Button("Submit");
 	private ProgressBar progressBar = new ProgressBar();
-	private Functions extraFunctions = new Functions();
+	private Functions functions = new Functions();
 	private TextField linkEntering = new TextField();
 	private TextField nameEntering = new TextField();
 	private Button ping = new Button("Ping");
 	
 	private TitleBar titleBar = new TitleBar();
-	//private ProgressIndicator progressIndicator = new ProgressIndicator();
 	
 	public Header() {
 
@@ -44,31 +43,30 @@ public class Header extends VBox{
 		linkEntering.setMaxSize(200, 35);
 		linkEntering.setStyle("-fx-background-color: #7289DA;"
 				+ "-fx-font-size: 15;"
-				+ "-fx-prompt-text-fill: #FFEFD5;"
-				+ "-fx-text-fill: black;"
-				+ "");
+				+ "-fx-prompt-text-fill: #99aab5;"
+				+ "-fx-text-fill: #23272a;");
 		
 		nameEntering.setPromptText("Enter a name");
 		nameEntering.setMinSize(200, 35);
 		nameEntering.setMaxSize(200, 35);
 		nameEntering.setStyle("-fx-background-color: #7289DA;"
 				+ "-fx-font-size: 15;"
-				+ "-fx-prompt-text-fill: #FFEFD5;"
-				+ "-fx-text-fill: black;"
-				+ "");
+				+ "-fx-prompt-text-fill: #99aab5;"
+				+ "-fx-text-fill: #23272a;");
+		
 		nameEntering.setAlignment(Pos.CENTER_LEFT);
 		
 		addTarget.setMinSize(80, 35);
 		addTarget.setMaxSize(80,35);
 		addTarget.setStyle(
 				"-fx-background-color: #6A5ACD;"
-				+"-fx-text-fill: white;"
+				+"-fx-text-fill: #23272a;"
 				);
 
 		ping.setMinSize(80, 20);
 		ping.setStyle(
 				"-fx-background-color: #6A5ACD;"
-				+ "-fx-text-fill: white;"
+				+ "-fx-text-fill: #23272a;"
 				);
 		ping.setTextAlignment(TextAlignment.CENTER);
 		
@@ -77,17 +75,11 @@ public class Header extends VBox{
 				+"-fx-control-background: transparent;"
 				+ "-fx-accent: #57f287");
 		
-//		progressIndicator.setMinSize(20,20);
-//		progressIndicator.setStyle("-fx-control-inner-background: #6A5ACD;"
-//				+ "-fx-accent: #57f287");
-		
 		titleBar.setAlignment(Pos.TOP_RIGHT);
 		
 		HBox titleBarCont = new HBox();
 		titleBarCont.getChildren().addAll(titleBar);
 		titleBarCont.setAlignment(Pos.TOP_RIGHT);
-		
-		
 		
 		HBox nameEnteringCont = new HBox();
 		nameEnteringCont.getChildren().addAll(nameEntering);
@@ -110,9 +102,8 @@ public class Header extends VBox{
 		pingButtonCont.setAlignment(Pos.CENTER);
 		
 		getChildren().addAll(titleBarCont, nameEnteringCont, linkEnteringCont, pingProgressCont,
-				pingButtonCont, extraFunctions);
+				pingButtonCont, functions);
 	}
-
 
 	public void clearLabel() {
 		linkEntering.clear();
@@ -124,15 +115,15 @@ public class Header extends VBox{
 	}
 
 	public Button getAddFromFileButton() {
-		return extraFunctions.getAddFromFileButton();
+		return functions.getAddFromFileButton();
 	}
 	
 	public Button getSaveLinksButton() {
-		return extraFunctions.getSaveLinksButton();
+		return functions.getSaveLinksButton();
 	}
 	
 	public Button getDeleteButton() {
-		return extraFunctions.getDeleteButton();
+		return functions.getDeleteButton();
 	}
 
 	public ProgressBar getBar() {
@@ -140,11 +131,11 @@ public class Header extends VBox{
 	}
 
 	public Button getClearButton() {
-		return extraFunctions.getClearButton();
+		return functions.getClearButton();
 	}
 	
 	public Button getChangeViewButton() {
-		return extraFunctions.getChangeViewButton();
+		return functions.getChangeViewButton();
 	}
 
 	public Button getCloseButton() {
