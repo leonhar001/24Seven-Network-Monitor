@@ -8,14 +8,14 @@ import javafx.scene.layout.HBox;
 public class Functions extends HBox {
 
 	private Button addFromFile = new Button("Load");
-	private Button clear = new Button("Clear all");
+	private Button clear = new Button("Delete all");
 	private Button saveLinks = new Button("Save");
 	private Button delete = new Button("Delete");
 	private Button changeToDetailed = new Button("Detailed view");
 	private Button changeToCardView = new Button("Card view");
-	
+
 	public Functions() {
-		
+
 		setMargin(changeToDetailed, new Insets(0,0,0,900));
 		changeToCardView.setDisable(true);
 		setAlignment(Pos.CENTER);
@@ -36,27 +36,27 @@ public class Functions extends HBox {
 	public Button getClearButton() {
 		return clear;
 	}
-	
+
 	public Button getSaveLinksButton() {
 		return saveLinks;
 	}
-	
+
 	public Button getDeleteButton() {
 		return delete;
 	}
-	
+
 	public Button getChangeToDetailedButton() {
 		return changeToDetailed;
 	}
-	
+
 	public Button getChangeToCardViewButton() {
 		return changeToCardView;
 	}
-	
+
 	private void setButtonStyle(Button button, String color) {
 		button.setStyle(
 				"-fx-background-color:"+color+";"
-				+"-fx-text-fill: #23272a;"
+						+"-fx-text-fill: #23272a;"
 				);
 	}
 }
